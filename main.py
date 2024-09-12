@@ -68,3 +68,8 @@ def postData(car: Car, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(db_car)
     return db_car
+
+
+@app.get("/health")
+def healt():
+    return "."
