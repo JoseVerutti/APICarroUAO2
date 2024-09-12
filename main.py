@@ -49,6 +49,11 @@ def getData(db: Session = Depends(get_db)):
     cars = db.query(CarModel).all()
     return cars
 
+@app.get("/car/latest")
+def getLatestData(db: Session = Depends(get_db)):
+    latest_car = db.query(CarModel).order_by(CarModel.id.desc()).first()
+    return latest_car
+
 @app.post("/car")
 def postData(car: Car, db: Session = Depends(get_db)):
     db_car = CarModel(
