@@ -43,6 +43,8 @@ class Car(BaseModel):
     temperatura: float
     humedad: float
     altura: float
+    corriente: float
+    tension : float
 
 @app.get("/car")
 def getData(db: Session = Depends(get_db)):
@@ -62,7 +64,9 @@ def postData(car: Car, db: Session = Depends(get_db)):
         longitud=car.longitud,
         temperatura=car.temperatura,
         humedad=car.humedad,
-        altura=car.altura
+        altura=car.altura,
+        corriente = car.corriente,
+        tension = car.tension
     )
     db.add(db_car)
     db.commit()
