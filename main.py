@@ -25,6 +25,8 @@ class CarModel(Base):
     temperatura = Column(Float)
     humedad = Column(Float)
     altura = Column(Float)
+    corriente = Column(Float)
+    tension = Column(Float)
 
 Base.metadata.create_all(bind=engine)
 
